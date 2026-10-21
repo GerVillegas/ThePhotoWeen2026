@@ -24,9 +24,20 @@
 </head>
 <body>
   <iframe 
+    id="appFrame"
     src="https://script.google.com/macros/s/AKfycbxRCHsOdzwpy8uHTSy-gNkmGakEp0rraaQNvXGubg-XBCM1r-5I7pHUSBMFIwDoyuI0/exec" 
     allow="clipboard-write; web-share"
     allowfullscreen>
   </iframe>
+
+  <script>
+    // Traspasa los parámetros del navegador (ej. ?folio=TPW-YTYJ) al iframe de Apps Script
+    const params = window.location.search;
+    if (params) {
+      const frame = document.getElementById('appFrame');
+      const baseSrc = frame.src.split('?')[0];
+      frame.src = baseSrc + params;
+    }
+  </script>
 </body>
 </html>
